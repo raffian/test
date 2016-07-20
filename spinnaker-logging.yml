@@ -1,5 +1,30 @@
-#clouddriver.yml:
+#/opt/spinnaker/config/clouddriver.yml
+#------------------------------------------
+cf:
+  enabled: ${providers.cf.enabled:false}
 
-logging:
-  level:
-    com.netflix.spinnaker: DEBUG
+  accounts:
+    - name: ${providers.cf.primaryCredentials.name}
+      api: ${providers.cf.primaryCredentials.api}
+      console: ${providers.cf.primaryCredentials.console}
+      org: ${providers.cf.defaultOrg}
+      space: ${providers.cf.defaultSpace}
+      username: ${providers.cf.account.name:}
+      password: ${providers.cf.account.password:}
+      
+      
+#/opt/spinnaker/config/spinnaker-local.yml
+#--------------------------------------------
+providers:
+  cf:
+    enabled: true
+    defaultOrg: acme
+    defaultSpace: development
+
+    primaryCredentials:
+      name: acme-pcf
+      api: https://api.cf.acme.com
+      console: https://apps.cf.acme.com
+    account:
+      name: spuser
+      password: spaswd
