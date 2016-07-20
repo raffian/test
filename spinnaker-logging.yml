@@ -1,0 +1,5 @@
+#clouddriver.yml:
+
+logging:
+  level:
+    com.netflix.spinnaker: DEBUG
